@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Тепловые насосы Haier «воздух-вода» — ИП «ТехноХолод»</title>
+<meta name="description" content="Тепловые насосы Haier воздух-вода Super Aqua: отопление и горячая вода до 60 °C, работа до −25 °C, класс до A+++, хладагент R32. Цены, характеристики, доставка по РК.">
+<link rel="icon" type="image/png" href="logo_tehnoholod.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  :focus-visible{outline:2px solid var(--blue-d);outline-offset:2px;}
+  :root{--blue:#1f7fd4;--blue-d:#1457a8;--red:#e63329;--orange:#f26b1f;--green:#22a06b;
+    --ink:#1a1f29;--muted:#6b7682;--line:#e7ecf2;--bg:#f4f7fb;--card:#fff;}
+  body{font-family:'Manrope',sans-serif;color:var(--ink);
+    background:radial-gradient(900px 500px at 12% -10%,rgba(31,127,212,.10),transparent 60%),
+      radial-gradient(800px 500px at 110% 0%,rgba(230,51,41,.08),transparent 55%),var(--bg);
+    min-height:100vh;padding:28px 18px 56px;display:flex;justify-content:center;}
+  .wrap{width:100%;max-width:960px;}
+  .head{display:flex;align-items:center;gap:12px;margin-bottom:22px;}
+  .brandlogo{width:50px;height:50px;flex:none;border-radius:50%;overflow:hidden;box-shadow:0 6px 18px rgba(31,127,212,.28);}
+  .brandlogo img{width:100%;height:100%;object-fit:contain;display:block;}
+  .bname{font-family:'Unbounded',sans-serif;font-weight:800;font-size:19px;}
+  .bname span{color:var(--blue-d);} .bname b{color:var(--red);}
+  .tag{font-size:12px;color:var(--muted);margin-top:1px;}
+  .backsite{margin-left:auto;align-self:center;display:inline-flex;align-items:center;gap:4px;
+    font-size:13px;font-weight:700;color:#1457a8;text-decoration:none;border:1px solid #cfe0f5;
+    background:#f2f7fe;padding:7px 12px;border-radius:8px;white-space:nowrap;}
+  h1{font-family:'Unbounded',sans-serif;font-size:25px;font-weight:600;margin-bottom:6px;}
+  .sub{color:var(--muted);font-size:14.5px;margin-bottom:18px;}
+  .contactbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 12px;}
+  .callbtn{display:inline-flex;align-items:center;gap:6px;background:#1457a8;color:#fff;
+    text-decoration:none;font-weight:800;font-size:15px;padding:10px 16px;border-radius:10px;}
+  .note{font-size:13px;opacity:.9;margin-top:4px;color:var(--muted);}
+  .trust{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;}
+  .trust span{font-size:13px;font-weight:600;color:var(--blue-d);background:#eef4fc;
+    border:1px solid #d8e6f7;border-radius:8px;padding:6px 10px;}
+  .intro{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;
+    margin-bottom:24px;box-shadow:0 18px 40px -30px rgba(20,40,80,.35);font-size:14.5px;color:#39424f;}
+  .intro b{color:var(--blue-d);}
+  .hp-series{margin-bottom:30px;}
+  .hp-series-head h2{font-family:'Unbounded',sans-serif;font-size:20px;font-weight:800;color:var(--ink);}
+  .hp-series-sub{font-size:13.5px;font-weight:700;color:var(--red);margin-top:2px;}
+  .hp-feat{font-size:13px;color:var(--muted);margin:6px 0 14px;line-height:1.5;}
+  .hp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+  .hp-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 18px 16px;
+    box-shadow:0 18px 40px -30px rgba(20,40,80,.35);display:flex;flex-direction:column;}
+  .hp-model{font-family:'Unbounded',sans-serif;font-weight:600;font-size:16px;color:var(--blue-d);
+    margin-bottom:12px;word-break:break-word;}
+  .hp-specs{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+  .sp{display:flex;justify-content:space-between;gap:10px;font-size:13px;border-bottom:1px dashed var(--line);padding-bottom:5px;}
+  .sp .k{color:var(--muted);}
+  .sp .v{font-weight:700;text-align:right;}
+  .hp-price{display:flex;align-items:baseline;justify-content:space-between;margin:2px 0 14px;
+    padding-top:6px;border-top:2px solid #eef2f7;}
+  .hp-price .pl{font-size:13px;color:var(--muted);font-weight:600;}
+  .hp-price b{font-family:'Unbounded',sans-serif;font-size:20px;color:var(--ink);}
+  .hp-cta{display:flex;gap:8px;margin-top:auto;}
+  .btn-call,.btn-wa{flex:1;text-align:center;text-decoration:none;font-weight:800;font-size:13.5px;
+    padding:10px 8px;border-radius:10px;}
+  .btn-call{background:#1457a8;color:#fff;}
+  .btn-wa{background:#22a06b;color:#fff;}
+  .foot{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);line-height:1.7;}
+  .foot b{color:var(--ink);}
+  @media(max-width:520px){.hp-grid{grid-template-columns:1fr;} h1{font-size:21px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="brandlogo"><img src="logo_tehnoholod.png" alt="ИП ТехноХолод"></div>
+    <div>
+      <div class="bname"><span>ИП «Техно</span><b>Холод»</b></div>
+      <div class="tag">Продажа · Доставка · Монтаж · Сервис · Работаем с НДС</div>
+    </div>
+    <a class="backsite" href="index.html">← К подбору кондиционера</a>
+  </div>
+
+  <h1>Тепловые насосы Haier «воздух-вода»</h1>
+  <p class="sub">Серия Super Aqua — отопление дома и горячее водоснабжение от уличного воздуха. До 5 кВт тепла из 1 кВт электричества.</p>
+
+  <div class="contactbar">
+    <a class="callbtn" href="tel:+77000369369">📞 +7 700 036 93 69</a>
+    <span class="note">Официальный поставщик · опт и розница · вся РК</span>
+  </div>
+  <div class="trust">
+    <span>🛡 Гарантия до 3 лет</span>
+    <span>💳 Рассрочка</span>
+    <span>🚚 Доставка по Казахстану</span>
+    <span>🔧 Монтаж и пусконаладка</span>
+  </div>
+
+  <div class="intro">
+    <b>Тепловой насос «воздух-вода»</b> забирает тепло из наружного воздуха и передаёт его в систему отопления
+    (радиаторы, тёплый пол) и горячего водоснабжения. Работает при уличной температуре до −25 °C, хладагент R32,
+    класс энергоэффективности до A+++. Ниже — актуальные модели с ценами. Цена указана за оборудование;
+    стоимость монтажа рассчитываем отдельно по объекту.
+  </div>
+
+    <section class="hp-series">
+      <div class="hp-series-head">
+        <h2>Super Aqua</h2>
+        <p class="hp-series-sub">Моноблок · для отопления и ГВС · 3 модели</p>
+        <p class="hp-feat">Фреон R32; двухроторный компрессор Full DC Mitsubishi Electric; моноблочная конструкция; циркуляционный насос Grundfos/Wilo; недельный таймер; защита от замерзания; BlueFin-покрытие испарителя; супертихий (53 дБ, 8 кВт); проводной пульт YR-E27 в комплекте</p>
+      </div>
+      <div class="hp-grid">
+      <div class="hp-card">
+        <div class="hp-model">AU082FYCRA(HW)</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Моноблок</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">7,0 / 7,8 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">нет данных</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−20…+46 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>1 252 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AU082FYCRA(HW)%20(7,0%20/%207,8%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="hp-card">
+        <div class="hp-model">AU112FYCRA(HW)</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Моноблок</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">13,5 / 11,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">нет данных</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−20…+46 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>2 039 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AU112FYCRA(HW)%20(13,5%20/%2011,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="hp-card">
+        <div class="hp-model">AU162FYCRA(HW)</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Моноблок</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">16,0 / 16,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">нет данных</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−20…+46 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>2 146 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AU162FYCRA(HW)%20(16,0%20/%2016,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="hp-series">
+      <div class="hp-series-head">
+        <h2>Super Aqua HE</h2>
+        <p class="hp-series-sub">Моноблок · нагрев воды до 60 °C · каскад до 8 блоков · 9 моделей</p>
+        <p class="hp-feat">Фреон R32; двухроторный компрессор Full DC Mitsubishi Electric; моноблок; нагрев воды до 60 °C; каскад до 8 блоков; допускается гликоль; насос Grundfos; недельный таймер; защита от замерзания; проводной пульт HW-WA101DBT в комплекте</p>
+      </div>
+      <div class="hp-grid">
+      <div class="hp-card">
+        <div class="hp-model">AW052MUCHA</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Моноблок</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">5,0 / 5,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A+++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">до 60 °C</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−25…+48 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>1 412 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AW052MUCHA%20(5,0%20/%205,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="hp-card">
+        <div class="hp-model">AW072MUCHA</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Моноблок</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">7,0 / 7,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A+++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">до 60 °C</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−25…+48 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>1 423 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AW072MUCHA%20(7,0%20/%207,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="hp-card">
+        <div class="hp-model">AW092MUCHA</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Моноблок</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">8,0 / 9,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A+++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">до 60 °C</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−25…+48 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>1 659 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AW092MUCHA%20(8,0%20/%209,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="hp-card">
+        <div class="hp-model">AW112MXCHA</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Моноблок</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">10,0 / 11,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A+++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">до 60 °C</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−25…+48 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>1 873 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AW112MXCHA%20(10,0%20/%2011,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="hp-card">
+        <div class="hp-model">AW142MXCHA</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Моноблок</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">13,5 / 14,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">до 60 °C</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−25…+48 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>2 039 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AW142MXCHA%20(13,5%20/%2014,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="hp-card">
+        <div class="hp-model">AW162MXCHA</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Моноблок</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">15,2 / 16,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">до 60 °C</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−25…+48 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>2 163 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AW162MXCHA%20(15,2%20/%2016,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="hp-card">
+        <div class="hp-model">AW11NMXCHA</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Моноблок</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">10,0 / 11,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A+++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">до 60 °C</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−25…+48 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>1 889 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AW11NMXCHA%20(10,0%20/%2011,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="hp-card">
+        <div class="hp-model">AW14NMXCHA</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Моноблок</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">13,5 / 14,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">до 60 °C</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−25…+48 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>2 050 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AW14NMXCHA%20(13,5%20/%2014,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="hp-card">
+        <div class="hp-model">AW16NMXCHA</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Моноблок</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">15,2 / 16,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">до 60 °C</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−25…+48 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>2 253 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AW16NMXCHA%20(15,2%20/%2016,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="hp-series">
+      <div class="hp-series-head">
+        <h2>Super Aqua S</h2>
+        <p class="hp-series-sub">Сплит (наружный + внутренний) · нагрев до 60 °C · 4 модели</p>
+        <p class="hp-feat">Фреон R32; сплит-система (наружный + внутренний блок); нагрев воды до 60 °C; двухроторный компрессор Full DC Mitsubishi Electric; насос Grundfos/Wilo; недельный таймер; защита от замерзания; контроллер с цветным сенсорным экраном 5&quot;; проточные ТЭНы 1 и 3 кВт; супертихий (44 дБ, 4 кВт)</p>
+      </div>
+      <div class="hp-grid">
+      <div class="hp-card">
+        <div class="hp-model">AW042SSCHA + HU062WAMNA</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Сплит (наружный + внутренний)</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">4,0 / 4,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A+++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">до 60 °C</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−25…+48 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>1 776 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AW042SSCHA%20+%20HU062WAMNA%20(4,0%20/%204,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="hp-card">
+        <div class="hp-model">AW062SSCHA + HU062WAMNA</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Сплит (наружный + внутренний)</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">6,0 / 6,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A+++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">до 60 °C</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−25…+48 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>1 781 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AW062SSCHA%20+%20HU062WAMNA%20(6,0%20/%206,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="hp-card">
+        <div class="hp-model">AW082SNCHA + HU102WAMNA</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Сплит (наружный + внутренний)</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">8,0 / 8,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A+++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">до 60 °C</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−25…+48 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>2 073 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AW082SNCHA%20+%20HU102WAMNA%20(8,0%20/%208,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="hp-card">
+        <div class="hp-model">AW102SNCHA + HU102WAMNA</div>
+        <div class="hp-specs"><div class="sp"><span class="k">Тип</span><span class="v">Сплит (наружный + внутренний)</span></div><div class="sp"><span class="k">Мощность хол/тепло</span><span class="v">10,0 / 10,0 кВт</span></div><div class="sp"><span class="k">Класс энергоэфф.</span><span class="v">A+++</span></div><div class="sp"><span class="k">Макс. темп. воды</span><span class="v">до 60 °C</span></div><div class="sp"><span class="k">Хладагент</span><span class="v">R32</span></div><div class="sp"><span class="k">Диапазон нар. темп.</span><span class="v">−25…+48 °C</span></div></div>
+        <div class="hp-price"><span class="pl">Цена</span><b>2 078 990 ₸</b></div>
+        <div class="hp-cta">
+          <a class="btn-call" href="tel:+77000369369">📞 Позвонить</a>
+          <a class="btn-wa" href="https://wa.me/77000369369?text=Здравствуйте!%20Интересует%20тепловой%20насос%20Haier%20AW102SNCHA%20+%20HU102WAMNA%20(10,0%20/%2010,0%20кВт).%20Подскажите%20наличие%20и%20условия." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      </div>
+    </section>
+
+  <div class="foot">
+    <b>ИП «ТехноХолод»</b> · г. Алматы, Турксибский р-н, мкр Алтай-1, д. 29/1 · доставка по Казахстану<br>
+    📞 +7 700 036 93 69 · ✉ tehnoholod369@gmail.com · 🛒 tehnoholod369.satu.kz<br>
+    Цены действительны на 08.07.2026 и могут меняться. Не является публичной офертой.
+  </div>
+</div>
+</body>
+</html>
