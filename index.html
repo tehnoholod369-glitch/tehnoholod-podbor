@@ -416,4 +416,13 @@ render();
               : el.closest('#instSeg')  ? 'выбор_монтажа'
               : (el.id==='tabMono'||el.id==='tabMulti') ? 'вкладка'
               : el.classList.contains('tg') ? 'уточнение' : 'фильтр';
-      var val = (el.dataset && (el.dataset.b||el.d
+      var val = (el.dataset && (el.dataset.b||el.dataset.t||el.dataset.i||el.dataset.body||el.dataset.k))
+                || (el.textContent||'').trim().slice(0,40);
+      send(grp, {val:val});
+    }, true);
+  }catch(e){}
+})();
+</script>
+
+</body>
+</html>
