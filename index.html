@@ -378,7 +378,7 @@ render();
 <script>
 (function(){
   // === ВСТАВЬТЕ СЮДА URL веб-приложения Apps Script (вид .../exec). Пока пусто — лог отключён. ===
-  var LOG_URL = "https://script.google.com/macros/s/AKfycbw9zgg0tM5SsV_CYbWOgLKVLKRWLbEr0vF2GYRMTqRJ1tFc4jqsPq4hgelJNUnIHMLxTQ/exec";
+  var LOG_URL = "https://script.google.com/macros/s/AKfycbzqoF8JVLc-OjrSLJbwZ8oBi0MbC5p89VHmLY9di3rcaK0TrTdEEPAduBqbYPRqWPwdgA/exec";
   if(!LOG_URL){ return; }
   try{
     // анонимный ID посетителя (живёт в браузере) и ID сессии (один визит)
@@ -392,7 +392,7 @@ render();
     function S(k){ try{ var st=(typeof state!=='undefined'&&state)?state:(window.state||null); return (st && st[k]!=null) ? (''+st[k]) : ''; }catch(e){ return ''; } }
     function send(ev, extra){
       try{
-        var d = { aid:aid, ses:ses, ev:ev, area:S('area'), budget:S('budget'),
+        var d = { channel:"подбор-клиент", aid:aid, ses:ses, ev:ev, area:S('area'), budget:S('budget'),
                   brand:S('brand'), type:S('tf'), src:src,
                   scr:(screen.width+'x'+screen.height), ua:(navigator.userAgent||'').slice(0,260) };
         if(extra){ for(var k in extra){ d[k]=extra[k]; } }
