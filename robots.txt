@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://podbor.tehnoholod369.kz/sitemap.xml
