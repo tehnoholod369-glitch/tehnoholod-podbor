@@ -1,7 +1,7 @@
 /* Ссылки на страницы товаров на сайте — для кнопки «Подробнее на сайте».
-   Формат:  "SKU": "https://tehnoholod369.satu.kz/p....html"
+   Формат:  "SKU": "https://tehnoholod369.kz/tovar?g=<группа>&sl=<слаг>&i=<номер>"
    Кнопка «Подробнее» появляется ТОЛЬКО у моделей, для которых здесь указана ссылка.
    SKU моделей см. в файле images/НУЖНЫ_ФОТО.csv или спросите — выгружу полный список. */
 const PRODUCT_URLS = {
-  // "THK-THAICON-001": "https://tehnoholod369.satu.kz/p123-...",
+  // "THK-THAICON-001": "https://tehnoholod369.kz/tovar?g=bytovye&sl=...&i=0",
 };
