@@ -559,5 +559,19 @@ render();
 })();
 </script>
 
+<script>
+/* T-006, 07.10.2026: ссылка вида ?area=50&fresh=1 открывает подборщик сразу с площадью и фильтром «свежий воздух с улицы»
+   (с посадочной /kondicioner-s-pritokom). Параметры необязательны; без них подборщик работает как раньше. */
+(function(){try{
+  var q=new URLSearchParams(location.search);
+  var a=parseInt(q.get('area'),10), f=q.get('fresh')==='1';
+  var okA=(a>=5&&a<=200);
+  if(!okA&&!f)return;
+  if(okA)state.area=a;
+  if(f){state.fresh=true;var t=document.querySelector('.tg.fresh');if(t)t.classList.add('on');}
+  render();
+}catch(e){}})();
+</script>
+
 </body>
 </html>
