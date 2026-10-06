@@ -721,30 +721,13 @@ render();
     var area = $("#areaN"), card = $("#monoSection .card"), list = $("#list"), mono = $("#monoSection");
     var reco = $(".reco"), warn = $("#warn"), title = $(".mtitle");
 
-    // быстрые кнопки площади: с притоком моделей меньше 9000 BTU нет, поэтому 15 и 20 м² в этом режиме не показываем
-    var chips = [], box = null;
-    function mark() { var cur = parseInt(area.value, 10); chips.forEach(function (c) { c[1].classList.toggle("on", c[0] === cur); }); }
-    function buildChips() {
-      if (!box) { box = document.createElement("div"); box.className = "th369-chips"; card.insertBefore(box, card.firstChild); }
-      box.innerHTML = ""; chips = [];
-      (state.fresh ? [25, 35, 50] : [15, 20, 25, 35, 50, 70]).forEach(function (v) {
-        var b = document.createElement("button");
-        b.type = "button"; b.textContent = v + " м²";
-        b.addEventListener("click", function () {
-          area.value = v;
-          area.dispatchEvent(new Event("input", { bubbles: true }));
-          area.dispatchEvent(new Event("change", { bubbles: true }));
-          mark();
-        });
-        box.appendChild(b); chips.push([v, b]);
-      });
-      mark();
-    }
-    if (area && card) {
-      buildChips();
-      area.addEventListener("input", mark); area.addEventListener("change", mark);
-      document.addEventListener("click", function () { setTimeout(function () { if (!!state.fresh !== (box.getAttribute("data-f") === "1")) { box.setAttribute("data-f", state.fresh ? "1" : "0"); buildChips(); } mark(); }, 50); });
-      box.setAttribute("data-f", state.fresh ? "1" : "0");
+    // мультисплит собирается на странице сайта /multisplit (один конструктор вместо двух, решение владельца 07.10.2026)
+    var tm = $("#tabMulti");
+    if (tm) {
+      var tm2 = tm.cloneNode(true);
+      tm2.textContent = "🏠 Несколько комнат · мультисплит →";
+      tm.parentNode.replaceChild(tm2, tm);
+      tm2.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); window.location.href = "https://tehnoholod369.kz/multisplit"; }, true);
     }
 
     // люди и панорамные окна — в блоке «Уточнить условия»
