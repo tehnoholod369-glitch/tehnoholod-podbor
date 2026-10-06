@@ -159,6 +159,44 @@ input[type=range]::-webkit-slider-thumb{border-color:#0066FF}input[type=range]::
 .foot a,.thpb a{color:#0066FF}
 .warn{border-radius:12px}
 </style>
+<style id="th369-skin2">
+/* T-006 v2, 07.10.2026: каркас как на сайте — верхняя полоса и меню, на широком экране две колонки (параметры слева, модели справа) */
+.th369-bar{background:#F1F5F9;border-bottom:1px solid #E2E8F0;font-size:13px;color:#0033A0;font-weight:600}
+.th369-bar .in,.th369-nav .in{max-width:1180px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:18px;min-height:34px}
+.th369-bar .sp{flex:1}.th369-bar a{color:#0033A0;text-decoration:none}.th369-bar .ph{font-weight:800}
+.th369-nav{background:#fff;border-bottom:1px solid #E2E8F0}
+.th369-nav .in{min-height:56px;gap:6px;overflow-x:auto;white-space:nowrap}
+.th369-nav a{color:#0033A0;text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:10px}
+.th369-nav a:hover{background:#EFF6FF}.th369-nav a.on{background:#0033A0;color:#fff}
+body{padding:0 0 56px!important;display:block!important}
+body>.wrap{margin:0 auto;padding:18px}
+.lab label{white-space:nowrap}.val{white-space:nowrap}
+@media(max-width:600px){.lab label{white-space:normal;padding-right:8px}.seg button.on{background:#0033A0!important;color:#fff!important}.th369-chips button{padding:8px 12px}.card{padding:18px 16px}}
+.th369-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.th369-chips button{border:1px solid #DBEAFE;background:#EFF6FF;color:#0033A0;font:700 14px Inter,sans-serif;border-radius:999px;padding:8px 14px;cursor:pointer}
+.th369-chips button:hover{border-color:#0066FF}.th369-chips button.on{background:#0033A0;border-color:#0033A0;color:#fff}
+.th369-more{display:block;text-align:center;margin-top:10px;padding:11px;border:1px solid #0066FF;border-radius:10px;color:#0066FF;font-weight:700;font-size:14px;text-decoration:none}
+.th369-more:hover{background:#EFF6FF}
+.mtop{flex-direction:column;align-items:stretch;gap:6px}.mtop .price{white-space:normal}.mtop .price>div{text-align:left!important}
+@media(min-width:1000px){
+ body>.wrap{max-width:1180px}
+ #monoSection{display:grid;grid-template-columns:380px minmax(0,1fr);grid-template-rows:auto auto auto auto 1fr;gap:0 24px;align-items:start}
+ #monoSection>.card{grid-column:1;grid-row:1/6;position:sticky;top:16px}
+ #monoSection>.reco,#monoSection>#warn,#monoSection>.mtitle,#monoSection>#list{grid-column:2}
+ #monoSection>.reco{margin-top:0}
+ #monoSection>.mtitle{margin-top:20px}
+ #monoSection>.foot,#monoSection>#cmpBar{grid-column:1/-1}
+ #monoSection #list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+ #monoSection #list .model{margin-bottom:0}
+}
+.reco{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.reco .big{font-size:30px}
+.model{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.model>*{margin-left:18px;margin-right:18px}.model>.photo{margin:0 0 14px;border:0;border-radius:0;border-bottom:1px solid #E2E8F0;aspect-ratio:4/3}
+.model>*:last-child{margin-bottom:18px}
+.price{font-size:26px}
+.wa{background:#0066FF!important}.wa:hover{background:#0033A0!important}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -609,5 +647,85 @@ render();
 }catch(e){}})();
 </script>
 
+<script id="th369-skin-js">
+/* T-006 v2, 07.10.2026: дизайн 369 и мелкий функционал подборщика: верхняя шапка сайта, быстрый выбор площади, счётчик моделей, ссылка на карточку на сайте */
+(function () {
+  try {
+    // шапка как на сайте
+    if (!document.querySelector(".th369-bar")) {
+      var h = document.createElement("div");
+      h.innerHTML = '<div class="th369-bar"><div class="in"><span>Доставка по Казахстану</span><span class="sp"></span><a class="ph" href="tel:+77000369369">+77 000 369 369</a><span>пн–пт 9:00–18:00</span></div></div>'
+        + '<div class="th369-nav"><div class="in"><a href="https://tehnoholod369.kz/">Главная</a><a class="on" href="https://podbor.tehnoholod369.kz/">Подбор кондиционера</a><a href="https://tehnoholod369.kz/katalog">Каталог</a><a href="https://tehnoholod369.kz/kondicioner-s-pritokom">С притоком</a><a href="https://tehnoholod369.kz/kontakty">Контакты</a></div></div>';
+      while (h.lastChild) document.body.insertBefore(h.lastChild, document.body.firstChild);
+    }
+    // быстрый выбор площади
+    var area = document.getElementById("areaN");
+    var card = document.querySelector("#monoSection .card");
+    var chips = [];
+    if (area && card && !document.querySelector(".th369-chips")) {
+      var box = document.createElement("div");
+      box.className = "th369-chips";
+      [15, 20, 25, 35, 50, 70].forEach(function (v) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.textContent = v + " м²";
+        b.addEventListener("click", function () {
+          area.value = v;
+          area.dispatchEvent(new Event("input", { bubbles: true }));
+          area.dispatchEvent(new Event("change", { bubbles: true }));
+          mark();
+        });
+        box.appendChild(b);
+        chips.push([v, b]);
+      });
+      card.insertBefore(box, card.firstChild);
+      var mark = function () {
+        var cur = parseInt(area.value, 10);
+        chips.forEach(function (c) { c[1].classList.toggle("on", c[0] === cur); });
+      };
+      area.addEventListener("input", mark);
+      area.addEventListener("change", mark);
+      document.addEventListener("click", function () { setTimeout(mark, 50); });
+      mark();
+    }
+    // счётчик моделей и ссылка на карточку на сайте
+    var list = document.getElementById("list");
+    var title = document.querySelector(".mtitle");
+    var map = null;
+    function decorate() {
+      var ms = list.querySelectorAll(".model");
+      if (title) title.textContent = "Рекомендуемые модели" + (ms.length ? " · " + ms.length : "");
+      if (!map) return;
+      ms.forEach(function (m) {
+        if (m.querySelector(".th369-more")) return;
+        var a = m.querySelector(".mart");
+        var art = a ? a.textContent.replace(/^\s*арт\.\s*/i, "").trim() : "";
+        var sl = map[art.toUpperCase()];
+        if (!sl) return;
+        var l = document.createElement("a");
+        l.className = "th369-more";
+        l.target = "_blank";
+        l.rel = "noopener";
+        l.href = "https://tehnoholod369.kz/tovar?g=bytovye&sl=" + encodeURIComponent(sl);
+        l.textContent = "Карточка на сайте →";
+        var wa = m.querySelector(".wa");
+        if (wa) m.insertBefore(l, wa); else m.appendChild(l);
+      });
+    }
+    if (list) {
+      new MutationObserver(function () { decorate(); }).observe(list, { childList: true });
+      decorate();
+      fetch("https://raw.githubusercontent.com/tehnoholod369-glitch/tehnoholod-katalog/main/novy-dizayn/data/bytovye.json")
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (d) {
+          map = {};
+          d.forEach(function (x) { if (x.s && x.sl) map[String(x.s).toUpperCase()] = x.sl; });
+          decorate();
+        })
+        .catch(function () {});
+    }
+  } catch (e) {}
+})();
+</script>
 </body>
 </html>
