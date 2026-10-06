@@ -172,7 +172,7 @@ input[type=range]::-webkit-slider-thumb{border-color:var(--blue)}input[type=rang
 .cattabs button{border-radius:8px;border:1px solid var(--line);font-weight:600}.cattabs button:hover{border-color:var(--blue)}
 .cattabs button.on{background:var(--blue-d)!important;border-color:var(--blue-d)!important;color:#fff!important}
 .seg{background:var(--bg);border-radius:8px}.seg button{border-radius:8px}.seg button.on{color:var(--blue-d)}
-@media(max-width:600px){.lab label{white-space:normal;padding-right:8px}.seg button.on{background:var(--blue-d)!important;color:#fff!important}.th369-chips button{padding:8px 12px}.card{padding:16px}}
+@media(max-width:600px){body>.wrap{padding:16px}.stepper .numin{width:60px}.stbtn{width:40px}.lab label{white-space:normal;padding-right:8px}.seg button.on{background:var(--blue-d)!important;color:#fff!important}.th369-chips button{padding:8px 12px}.card{padding:16px}}
 .tg{border-radius:8px;border-color:var(--line)}
 .tg.on{border-color:var(--blue);background:var(--light);color:var(--blue-d)}.tg.on .box{background:var(--blue);border-color:var(--blue)}
 .tg.fresh.on{border-color:var(--blue);background:var(--light);color:var(--blue-d)}.tg.fresh.on .box{background:var(--blue);border-color:var(--blue)}
@@ -786,8 +786,8 @@ render();
     });
 
     // акции и «наш выбор»
-    var sale = {}, pickBtn = null, pickOn = false;
-    fetch(RAW + "data/akcii.json").then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) { sale = (d && d.items) || {}; decorate(); }).catch(function () {});
+    var sale = {}, pickBtn = null, pickOn = false, saleLoaded = false;
+    fetch(RAW + "data/akcii.json").then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) { sale = (d && d.items) || {}; }).catch(function () {}).then(function () { saleLoaded = true; decorate(); });
     var sortSeg = $("#sortSeg");
     if (sortSeg) {
       pickBtn = document.createElement("button");
@@ -835,7 +835,9 @@ render();
         var a = $(".mart", m), art = a ? a.textContent.replace(/^\s*арт\.\s*/i, "").trim().toUpperCase() : "";
         if (!art) return;
         var bd = $(".badges", m);
-        if (bd && !m.hasAttribute("data-th369")) {
+        var saleReady = saleLoaded;
+        if (bd && saleReady && !m.hasAttribute("data-th369b")) {
+          m.setAttribute("data-th369b", "1");
           if (sale[art]) { var s = document.createElement("span"); s.className = "th369-badge sale"; s.textContent = "Акция"; s.title = sale[art].why || ""; bd.insertBefore(s, bd.firstChild); m.setAttribute("data-sale", "1"); }
           if (OUR_PICK.indexOf(art) >= 0) { var p = document.createElement("span"); p.className = "th369-badge pick"; p.textContent = "Наш выбор"; bd.insertBefore(p, bd.firstChild); m.setAttribute("data-pick", "1"); }
         }
