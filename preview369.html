@@ -207,6 +207,19 @@ input[type=range]::-webkit-slider-thumb{border-color:var(--blue)}input[type=rang
 .th369-empty{grid-column:1/-1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;color:var(--ink)}
 .th369-empty b{display:block;font-size:18px;line-height:24px;color:var(--blue-d);margin-bottom:8px}.th369-empty p{color:var(--muted);font-size:14px;line-height:20px;margin-bottom:16px}
 .th369-pp{display:flex;align-items:center;gap:8px;margin-top:14px;font-weight:600;font-size:15px}.th369-pp .stepper{margin-left:auto}
+/* нормализация старых элементов под дизайн-код: шрифт Inter, радиусы 4/8/12/16, цвета палитры (Kaspi-бейдж рассрочки — фирменные цвета Kaspi, оставлены) */
+.phlogo,.bname b,.rass,.rass b,.rass i{font-family:'Inter',system-ui,Arial,sans-serif!important}
+.phlogo{color:#64748B!important}
+.seglab,.note,.rass i,.model i,.mcap,.mart{color:#64748B}
+.seg button,.brandrow button,.cattabs button{color:#1A1A1A}
+.brandrow button,.cmpbtn,.vidbtn,.moreBtn3,input,select{border-radius:8px!important}
+.brandrow button.on{background:#E9F4FF!important;color:#0033A0!important;border-color:#0066FF!important}
+.model .badges span,.model .chips span,.model .phlogo,.trust span,.thumbs img{border-radius:4px!important}
+.box{border-radius:4px}
+.kaspi{border-radius:4px!important}
+.cmpbtn,.moreBtn3,.descWrap summary,.trust span,.trust{color:#0033A0}
+.feat li{color:#1A1A1A}.descBox{color:#1A1A1A!important}
+.backsite{background:#fff!important}
 @media(min-width:1000px){
  body>.wrap{max-width:1200px}
  #monoSection{display:grid;grid-template-columns:380px minmax(0,1fr);grid-template-rows:auto auto auto auto auto auto 1fr;gap:0 24px;align-items:start}
