@@ -124,81 +124,116 @@
 
 <link rel="canonical" href="https://podbor.tehnoholod369.kz/">
 <style id="th369-skin">
-/* T-006, 07.10.2026: подборщик в дизайне 369 (Inter, #0033A0 / #0066FF / #E81C1C, фон #F1F5F9). Откат: удалить этот блок и вернуть шрифты Manrope/Unbounded */
-:root{--blue:#0066FF;--blue-d:#0033A0;--red:#E81C1C;--orange:#F6550D;--green:#16A34A;--ink:#0F172A;--muted:#64748B;--line:#E2E8F0;--bg:#F1F5F9;--card:#fff}
-body,button,input,select,textarea{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
-body{background:#F1F5F9;padding-top:20px}
-h1,.bname,.mname,.price,.reco .big,.val b,.val .numin,.stepper .numin{font-family:'Inter',system-ui,sans-serif;letter-spacing:-.02em}
-h1{font-size:30px;font-weight:800;color:#0033A0}
-.bname{font-weight:800;color:#0033A0}.bname span{color:#0033A0}.bname b{color:#E81C1C}
-.card,.model,.cmpDlg{border-radius:16px;box-shadow:none;border:1px solid #E2E8F0}
-.model:hover{box-shadow:0 10px 28px -18px rgba(15,23,42,.25)}
-.model.fresh{border-color:#16A34A;box-shadow:0 0 0 1.5px #16A34A}
-.mname{font-weight:700;font-size:18px;color:#0F172A}
-.price{font-weight:800;color:#E81C1C}
-.reco{background:#0033A0;border-radius:16px}
-.reco .big{font-weight:800}
-.callbtn{background:#0033A0!important;border-radius:10px!important}
-.cattabs button{border-radius:12px;border-color:#E2E8F0}
-.cattabs button:hover{border-color:#0066FF}
-.cattabs button.on{background:#0033A0!important;border-color:#0033A0!important;color:#fff!important}
-.seg{background:#F1F5F9;border-radius:12px}.seg button.on{color:#0033A0}
-.tg.on{border-color:#0066FF;background:#EFF6FF;color:#0033A0}.tg.on .box{background:#0066FF;border-color:#0066FF}
-.tg.fresh.on{border-color:#16A34A;background:#ECFDF5;color:#047857}.tg.fresh.on .box{background:#16A34A;border-color:#16A34A}
-.stbtn{border-radius:10px;color:#0033A0;background:#F8FAFC;border-color:#E2E8F0}.stbtn:hover{border-color:#0066FF;background:#EFF6FF}.stbtn:active{background:#0033A0;border-color:#0033A0;color:#fff}
-.val .numin,.stepper .numin{border-color:#E2E8F0;color:#0033A0;border-radius:10px}
-.val .numin:focus{border-color:#0066FF;box-shadow:0 0 0 3px rgba(0,102,255,.18)}
-input[type=range]{background:linear-gradient(90deg,#0066FF,#0033A0)}
-input[type=range]::-webkit-slider-thumb{border-color:#0066FF}input[type=range]::-moz-range-thumb{border-color:#0066FF}
-.more{color:#0066FF}
-.chip{color:#0033A0;background:#EFF6FF;border-color:#DBEAFE}
-.photo{border-radius:12px;background:#F8FAFC}
-.wa{border-radius:10px;font-weight:700}
-.mtitle{color:#0033A0;text-transform:none;font-size:18px;letter-spacing:0;font-weight:800}
-.backsite{color:#0066FF!important;border-radius:10px!important}
-.foot a,.thpb a{color:#0066FF}
-.warn{border-radius:12px}
-</style>
-<style id="th369-skin2">
-/* T-006 v2, 07.10.2026: каркас как на сайте — верхняя полоса и меню, на широком экране две колонки (параметры слева, модели справа) */
-.th369-bar{background:#F1F5F9;border-bottom:1px solid #E2E8F0;font-size:13px;color:#0033A0;font-weight:600}
-.th369-bar .in,.th369-nav .in{max-width:1180px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:18px;min-height:34px}
-.th369-bar .sp{flex:1}.th369-bar a{color:#0033A0;text-decoration:none}.th369-bar .ph{font-weight:800}
-.th369-nav{background:#fff;border-bottom:1px solid #E2E8F0}
-.th369-nav .in{min-height:56px;gap:6px;overflow-x:auto;white-space:nowrap}
-.th369-nav a{color:#0033A0;text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:10px}
-.th369-nav a:hover{background:#EFF6FF}.th369-nav a.on{background:#0033A0;color:#fff}
-body{padding:0 0 56px!important;display:block!important}
-body>.wrap{margin:0 auto;padding:18px}
+/* T-006 v3, 07.10.2026: оформление по ДИЗАЙН-КОД ТехноХолод v3.1 (tokens.json): Inter; #0033A0 заголовки, #0066FF ссылки и кнопки, #E81C1C только цена и метка акции;
+   радиусы 4/8/12/16; контейнер 1200; тени синие s/m/l; текст #1A1A1A, линии #DCE5F0, статус «в наличии» #178841. Откат: вернуть предыдущий коммит. */
+:root{--blue:#0066FF;--blue-hover:#0052D6;--blue-pressed:#003FA8;--blue-d:#0033A0;--red:#E81C1C;--orange:#F59E0B;--green:#178841;--ink:#1A1A1A;--muted:#64748B;--line:#DCE5F0;--bg:#F1F5F9;--card:#fff;--light:#E9F4FF;
+ --sh-s:0 1px 2px rgba(0,51,160,.06);--sh-m:0 4px 12px rgba(0,51,160,.08);--sh-l:0 12px 32px rgba(0,51,160,.12)}
+body,button,input,select,textarea{font-family:'Inter',system-ui,Arial,sans-serif}
+body{background:var(--bg);color:var(--ink);font-size:16px;line-height:24px;padding:0 0 56px!important;display:block!important}
+:focus-visible{outline:3px solid var(--blue)!important;outline-offset:2px}
+h1,.bname,.mname,.price,.reco .big,.val b,.val .numin,.stepper .numin{font-family:'Inter',system-ui,Arial,sans-serif;letter-spacing:0}
+h1{font-size:48px;line-height:56px;font-weight:700;color:var(--blue-d)}
+@media(max-width:700px){h1{font-size:32px;line-height:40px}}
+.bname{font-weight:700;color:var(--blue-d)}.bname span{color:var(--blue-d)}.bname b{color:var(--red)}
+.sub{font-size:16px;line-height:24px}
+/* шапка сайта */
+.th369-bar{background:var(--bg);border-bottom:1px solid var(--line);font-size:14px;line-height:20px;color:var(--blue-d);font-weight:500}
+.th369-bar .in,.th369-nav .in{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:24px;min-height:40px}
+.th369-bar .sp{flex:1}.th369-bar a{color:var(--blue-d);text-decoration:none}.th369-bar .ph{font-weight:600}
+.th369-nav{background:#fff;border-bottom:1px solid var(--line)}
+.th369-nav .in{min-height:56px;gap:8px;overflow-x:auto;white-space:nowrap}
+.th369-nav a{color:var(--blue-d);text-decoration:none;font-weight:600;font-size:15px;padding:8px 12px;border-radius:8px}
+.th369-nav a:hover{background:var(--light)}.th369-nav a.on{background:var(--blue-d);color:#fff}
+body>.wrap{margin:0 auto;padding:24px}
+/* блоки и карточки */
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh-s);padding:24px}
+.model{border:1px solid var(--line);border-radius:12px;box-shadow:var(--sh-s);padding:0;overflow:hidden;display:flex;flex-direction:column}
+.model:hover{box-shadow:var(--sh-l)}
+.model.fresh{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+.model>*{margin-left:16px;margin-right:16px}
+.model>.photo{margin:0 0 16px;border:0;border-radius:0;border-bottom:1px solid var(--line);aspect-ratio:4/3;background:#fff}
+.model>*:last-child{margin-bottom:16px}
+.photo img{inset:12px;width:calc(100% - 24px);height:calc(100% - 24px)}
+.mname{font-size:18px;line-height:24px;font-weight:600;color:var(--ink)}
+.mcap,.mart{color:var(--muted)}
+.price{font-size:24px;line-height:32px;font-weight:700;color:var(--red)}
+.mtop{flex-direction:column;align-items:stretch;gap:8px}.mtop .price{white-space:normal}.mtop .price>div{text-align:left!important}
+.reco{background:var(--blue-d);border-radius:16px;box-shadow:var(--sh-m);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.reco .big{font-size:32px;line-height:40px;font-weight:700}
+.mtitle{color:var(--blue-d);text-transform:none;font-size:20px;line-height:28px;letter-spacing:0;font-weight:600}
+.callbtn,.backsite{border-radius:8px!important}.callbtn{background:var(--blue-d)!important}.backsite{color:var(--blue)!important}
+/* поля и кнопки */
+.stbtn,.val .numin,.stepper .numin{border-radius:8px;border:1px solid var(--muted)}
+.stbtn{color:var(--blue-d);background:#fff}.stbtn:hover{background:var(--light);border-color:var(--blue)}.stbtn:active{background:var(--blue-d);border-color:var(--blue-d);color:#fff}
+.val .numin,.stepper .numin{color:var(--blue-d)}.val .numin:focus{border-color:var(--blue);box-shadow:none}
+input[type=range]{background:linear-gradient(90deg,var(--blue),var(--blue-d))}
+input[type=range]::-webkit-slider-thumb{border-color:var(--blue)}input[type=range]::-moz-range-thumb{border-color:var(--blue)}
+.more{color:var(--blue)}
+.cattabs button{border-radius:8px;border:1px solid var(--line);font-weight:600}.cattabs button:hover{border-color:var(--blue)}
+.cattabs button.on{background:var(--blue-d)!important;border-color:var(--blue-d)!important;color:#fff!important}
+.seg{background:var(--bg);border-radius:8px}.seg button{border-radius:8px}.seg button.on{color:var(--blue-d)}
+@media(max-width:600px){.lab label{white-space:normal;padding-right:8px}.seg button.on{background:var(--blue-d)!important;color:#fff!important}.th369-chips button{padding:8px 12px}.card{padding:16px}}
+.tg{border-radius:8px;border-color:var(--line)}
+.tg.on{border-color:var(--blue);background:var(--light);color:var(--blue-d)}.tg.on .box{background:var(--blue);border-color:var(--blue)}
+.tg.fresh.on{border-color:var(--blue);background:var(--light);color:var(--blue-d)}.tg.fresh.on .box{background:var(--blue);border-color:var(--blue)}
+.chip{color:var(--blue-d);background:var(--light);border:0;border-radius:4px;font-weight:500}
+.freshb{background:var(--light);color:var(--blue-d);border:0;border-radius:4px}
+.st{border-radius:4px}.st-in{background:#fff;color:var(--green);border:1px solid var(--green)}.st-order{background:#fff;color:#606F85;border:1px solid #606F85}
+.wa{background:var(--blue)!important;border-radius:8px;min-height:48px;font-weight:600}.wa:hover{background:var(--blue-hover)!important}.wa:active{background:var(--blue-pressed)!important}
+.warn{border-radius:8px}
+.foot a,.thpb a{color:var(--blue)}
+/* добавленные блоки */
 .lab label{white-space:nowrap}.val{white-space:nowrap}
-@media(max-width:600px){.lab label{white-space:normal;padding-right:8px}.seg button.on{background:#0033A0!important;color:#fff!important}.th369-chips button{padding:8px 12px}.card{padding:18px 16px}}
 .th369-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
-.th369-chips button{border:1px solid #DBEAFE;background:#EFF6FF;color:#0033A0;font:700 14px Inter,sans-serif;border-radius:999px;padding:8px 14px;cursor:pointer}
-.th369-chips button:hover{border-color:#0066FF}.th369-chips button.on{background:#0033A0;border-color:#0033A0;color:#fff}
-.th369-more{display:block;text-align:center;margin-top:10px;padding:11px;border:1px solid #0066FF;border-radius:10px;color:#0066FF;font-weight:700;font-size:14px;text-decoration:none}
-.th369-more:hover{background:#EFF6FF}
-.mtop{flex-direction:column;align-items:stretch;gap:6px}.mtop .price{white-space:normal}.mtop .price>div{text-align:left!important}
+.th369-chips button{border:1px solid var(--line);background:#fff;color:var(--blue-d);font:600 14px/20px Inter,sans-serif;border-radius:8px;padding:8px 14px;cursor:pointer}
+.th369-chips button:hover{border-color:var(--blue)}.th369-chips button.on{background:var(--blue-d);border-color:var(--blue-d);color:#fff}
+.th369-more{display:flex;align-items:center;justify-content:center;min-height:48px;margin-top:8px;border:1.5px solid var(--blue);border-radius:8px;background:#fff;color:var(--blue);font-weight:600;font-size:16px;text-decoration:none}
+.th369-more:hover{background:var(--light)}
+.th369-why{font-size:14px;line-height:20px;opacity:.9;margin-top:4px;flex-basis:100%}
+.th369-help{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--sh-s);padding:16px;margin-top:16px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.th369-help p{flex:1 1 280px;font-size:14px;line-height:20px;color:var(--muted)}
+.th369-help .acts{display:flex;flex-wrap:wrap;gap:8px}
+.th369-help .acts>*{margin-top:0;padding:0 16px}
+.th369-help button.th369-more{font-family:inherit;cursor:pointer}
+.th369-info{background:var(--light);border-radius:12px;padding:16px;margin-top:16px;font-size:14px;line-height:20px;color:var(--blue-d)}
+.th369-info b{display:block;font-size:16px;line-height:24px;margin-bottom:4px}
+.th369-info a{color:var(--blue-d);font-weight:600;margin-right:16px;white-space:nowrap}
+.th369-trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:24px}
+.th369-trust div{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--sh-s);padding:16px}
+.th369-trust b{display:block;color:var(--blue-d);font-size:16px;line-height:24px}.th369-trust span{font-size:14px;line-height:20px;color:var(--muted)}
+.th369-badge{display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:4px;font:600 12px/1 Inter,sans-serif;color:#fff}
+.th369-badge.sale{background:var(--red)}.th369-badge.pick{background:var(--blue)}
+.th369-empty{grid-column:1/-1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;color:var(--ink)}
+.th369-empty b{display:block;font-size:18px;line-height:24px;color:var(--blue-d);margin-bottom:8px}.th369-empty p{color:var(--muted);font-size:14px;line-height:20px;margin-bottom:16px}
+.th369-pp{display:flex;align-items:center;gap:8px;margin-top:14px;font-weight:600;font-size:15px}.th369-pp .stepper{margin-left:auto}
+/* нормализация старых элементов под дизайн-код: шрифт Inter, радиусы 4/8/12/16, цвета палитры (Kaspi-бейдж рассрочки — фирменные цвета Kaspi, оставлены) */
+.phlogo,.bname b,.rass,.rass b,.rass i{font-family:'Inter',system-ui,Arial,sans-serif!important}
+.phlogo{color:#64748B!important}
+.seglab,.note,.rass i,.model i,.mcap,.mart{color:#64748B}
+.seg button,.brandrow button,.cattabs button{color:#1A1A1A}
+.brandrow button,.cmpbtn,.vidbtn,.moreBtn3,input,select{border-radius:8px!important}
+.brandrow button.on{background:#E9F4FF!important;color:#0033A0!important;border-color:#0066FF!important}
+.model .badges span,.model .chips span,.model .phlogo,.trust span,.thumbs img{border-radius:4px!important}
+.box{border-radius:4px}
+.kaspi{border-radius:4px!important}
+.cmpbtn,.moreBtn3,.descWrap summary,.trust span,.trust{color:#0033A0}
+.feat li{color:#1A1A1A}.descBox{color:#1A1A1A!important}
+.backsite{background:#fff!important}
+.reco .note,.reco .small{color:#fff!important;opacity:.9}
+b,strong{font-family:inherit}.val b,.contactbar b{color:#0033A0}
+.trust span{background:#E9F4FF!important}
+.foot a{color:#0066FF!important}
 @media(min-width:1000px){
- body>.wrap{max-width:1180px}
- #monoSection{display:grid;grid-template-columns:380px minmax(0,1fr);grid-template-rows:auto auto auto auto 1fr;gap:0 24px;align-items:start}
- #monoSection>.card{grid-column:1;grid-row:1/6;position:sticky;top:16px}
- #monoSection>.reco,#monoSection>#warn,#monoSection>.mtitle,#monoSection>#list{grid-column:2}
+ body>.wrap{max-width:1200px}
+ #monoSection{display:grid;grid-template-columns:380px minmax(0,1fr);grid-template-rows:auto auto auto auto auto auto 1fr;gap:0 24px;align-items:start}
+ #monoSection>.card{grid-column:1;grid-row:1/8;position:sticky;top:16px}
+ #monoSection>.reco,#monoSection>#warn,#monoSection>.th369-help,#monoSection>.th369-info,#monoSection>.mtitle,#monoSection>#list,#monoSection>.th369-trust{grid-column:2}
  #monoSection>.reco{margin-top:0}
- #monoSection>.mtitle{margin-top:20px}
+ #monoSection>.mtitle{margin-top:24px}
  #monoSection>.foot,#monoSection>#cmpBar{grid-column:1/-1}
- #monoSection #list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+ #monoSection #list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin-top:16px}
  #monoSection #list .model{margin-bottom:0}
 }
-.reco{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.reco .big{font-size:30px}
-.model{padding:0;overflow:hidden;display:flex;flex-direction:column}
-.model>*{margin-left:18px;margin-right:18px}.model>.photo{margin:0 0 14px;border:0;border-radius:0;border-bottom:1px solid #E2E8F0;aspect-ratio:4/3}
-.model>*:last-child{margin-bottom:18px}
-.price{font-size:26px}
-.photo img{inset:12px;width:calc(100% - 24px);height:calc(100% - 24px)}
-.th369-empty{grid-column:1/-1;background:#fff;border:1px solid #E2E8F0;border-radius:16px;padding:22px;color:#0F172A}
-.th369-empty b{display:block;font-size:17px;color:#0033A0;margin-bottom:8px}.th369-empty p{color:#64748B;font-size:14px;line-height:1.55;margin-bottom:14px}
-.wa{background:#0066FF!important}.wa:hover{background:#0033A0!important}
 </style>
 </head>
 <body>
@@ -651,92 +686,190 @@ render();
 </script>
 
 <script id="th369-skin-js">
-/* T-006 v2, 07.10.2026: дизайн 369 и мелкий функционал подборщика: верхняя шапка сайта, быстрый выбор площади, счётчик моделей, ссылка на карточку на сайте */
+/* T-006 v3, 07.10.2026: подборщик — шапка сайта, быстрые кнопки площади, люди и панорамные окна в расчёте, пояснение расчёта,
+   дисклеймер и кнопка WhatsApp, блок про приток, блок доверия (только подтверждённые формулировки), акции и «наш выбор», ссылка на карточку, поделиться подбором. */
 (function () {
+  var RAW = "https://raw.githubusercontent.com/tehnoholod369-glitch/tehnoholod-katalog/main/novy-dizayn/";
+  // «Наш выбор» — редакционная метка владельца; список артикулов правится здесь
+  var OUR_PICK = ["TAC-FR09HSV/P7W", "TAC-FR12HSV/P7W", "TAC-FR18HSV/P7W"];
+  function $(s, r) { return (r || document).querySelector(s); }
+  function fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
   try {
-    // шапка как на сайте
-    if (!document.querySelector(".th369-bar")) {
+    state.people = state.people || 2;
+    state.glass = !!state.glass;
+
+    // расчёт: к прежней формуле добавлены люди (свыше двух, по 100 Вт) и панорамные окна (+12 %)
+    calc = function () {
+      var k = 1 + (state.sun ? 0.2 : 0) + (state.top ? 0.1 : 0) + (state.kit ? 0.2 : 0) + (state.glass ? 0.12 : 0);
+      var w = state.area * 100 * ((state.h || 270) / 270) * k + Math.max(0, (state.people || 2) - 2) * 100;
+      var req = Math.round(w * 3.412);
+      var need = req * 0.95;
+      var cls = CLASSES.find(function (c) { return c >= need; });
+      return { req: req, need: need, cls: cls || 60000, overload: !cls };
+    };
+
+    // шапка сайта
+    if (!$(".th369-bar")) {
       var h = document.createElement("div");
       h.innerHTML = '<div class="th369-bar"><div class="in"><span>Доставка по Казахстану</span><span class="sp"></span><a class="ph" href="tel:+77000369369">+77 000 369 369</a><span>пн–пт 9:00–18:00</span></div></div>'
         + '<div class="th369-nav"><div class="in"><a href="https://tehnoholod369.kz/">Главная</a><a class="on" href="https://podbor.tehnoholod369.kz/">Подбор кондиционера</a><a href="https://tehnoholod369.kz/katalog">Каталог</a><a href="https://tehnoholod369.kz/kondicioner-s-pritokom">С притоком</a><a href="https://tehnoholod369.kz/kontakty">Контакты</a></div></div>';
       while (h.lastChild) document.body.insertBefore(h.lastChild, document.body.firstChild);
     }
-    // быстрый выбор площади
-    var area = document.getElementById("areaN");
-    var card = document.querySelector("#monoSection .card");
+
+    var area = $("#areaN"), card = $("#monoSection .card"), list = $("#list"), mono = $("#monoSection");
+    var reco = $(".reco"), warn = $("#warn"), title = $(".mtitle");
+
+    // быстрые кнопки площади
     var chips = [];
-    if (area && card && !document.querySelector(".th369-chips")) {
+    function mark() { var cur = parseInt(area.value, 10); chips.forEach(function (c) { c[1].classList.toggle("on", c[0] === cur); }); }
+    if (area && card) {
       var box = document.createElement("div");
       box.className = "th369-chips";
       [15, 20, 25, 35, 50, 70].forEach(function (v) {
         var b = document.createElement("button");
-        b.type = "button";
-        b.textContent = v + " м²";
+        b.type = "button"; b.textContent = v + " м²";
         b.addEventListener("click", function () {
           area.value = v;
           area.dispatchEvent(new Event("input", { bubbles: true }));
           area.dispatchEvent(new Event("change", { bubbles: true }));
           mark();
         });
-        box.appendChild(b);
-        chips.push([v, b]);
+        box.appendChild(b); chips.push([v, b]);
       });
       card.insertBefore(box, card.firstChild);
-      var mark = function () {
-        var cur = parseInt(area.value, 10);
-        chips.forEach(function (c) { c[1].classList.toggle("on", c[0] === cur); });
-      };
-      area.addEventListener("input", mark);
-      area.addEventListener("change", mark);
+      area.addEventListener("input", mark); area.addEventListener("change", mark);
       document.addEventListener("click", function () { setTimeout(mark, 50); });
       mark();
     }
-    // счётчик моделей и ссылка на карточку на сайте
-    var list = document.getElementById("list");
-    var title = document.querySelector(".mtitle");
+
+    // люди и панорамные окна — в блоке «Уточнить условия»
+    var adv = $("#adv"), moreBtn = $("#moreBtn");
+    if (moreBtn) moreBtn.textContent = "+ Уточнить условия: люди, окна, солнце";
+    if (adv) {
+      var pp = document.createElement("div");
+      pp.className = "th369-pp";
+      pp.innerHTML = '<span>Людей в комнате</span><span class="stepper"><button type="button" class="stbtn" id="ppMinus" aria-label="Меньше людей">−</button><span id="ppVal" style="min-width:32px;text-align:center;font-weight:700;color:#0033A0">' + state.people + '</span><button type="button" class="stbtn" id="ppPlus" aria-label="Больше людей">+</button></span>';
+      adv.insertBefore(pp, adv.firstChild);
+      var gl = document.createElement("div");
+      gl.className = "tg" + (state.glass ? " on" : ""); gl.setAttribute("data-k3", "glass");
+      gl.innerHTML = '<span class="box"></span>Панорамные окна / большое остекление';
+      adv.appendChild(gl);
+      var sunT = $('.tg[data-k="sun"]'); if (sunT) sunT.lastChild.textContent = "Окна на солнечную сторону (юг, запад)";
+      function setP(n) { state.people = Math.max(1, Math.min(10, n)); $("#ppVal").textContent = state.people; render(); }
+      $("#ppMinus").addEventListener("click", function () { setP(state.people - 1); });
+      $("#ppPlus").addEventListener("click", function () { setP(state.people + 1); });
+      gl.addEventListener("click", function () { state.glass = !state.glass; gl.classList.toggle("on", state.glass); render(); });
+    }
+
+    // дисклеймер, кнопки, блок про приток, блок доверия
+    var help = document.createElement("div");
+    help.className = "th369-help";
+    help.innerHTML = '<p>Расчёт приблизительный: по площади, высоте и условиям. Точный подбор подтвердим в WhatsApp.</p><div class="acts"><a class="th369-more" id="thWa" target="_blank" rel="noopener" style="background:#0066FF;color:#fff;border-color:#0066FF" href="#">Подберём заочно в WhatsApp</a><button type="button" class="th369-more" id="thShare">Поделиться подбором</button></div>';
+    var info = document.createElement("div");
+    info.className = "th369-info"; info.style.display = "none";
+    info.innerHTML = '<b>Приточные модели забирают воздух с улицы</b>Через фильтр HEPA, окно открывать не нужно. Как это работает: <br><a href="https://tehnoholod369.kz/kak-rabotaet-konditsioner-s-pritokom">Как работает приток</a><a href="https://tehnoholod369.kz/brizer-ili-konditsioner-s-pritokom">Бризер или кондиционер с притоком</a><a href="https://tehnoholod369.kz/pritok-vozdukha-vs-fortochka">Приток или форточка</a>';
+    var trust = document.createElement("div");
+    trust.className = "th369-trust";
+    trust.innerHTML = '<div><b>Официальный дилер</b><span>Оборудование ведущих брендов</span></div><div><b>Гарантия 3 года</b><span>при условии ежегодного обслуживания</span></div><div><b>Доставка по Алматы бесплатно</b><span>при заказе от 100 000 ₸</span></div><div><b>Рассрочка</b><span>Kaspi / банк, 12 месяцев</span></div>';
+    if (mono && warn) { warn.insertAdjacentElement("afterend", info); warn.insertAdjacentElement("afterend", help); var foot = $(".foot", mono); if (foot) mono.insertBefore(trust, foot); else mono.appendChild(trust); }
+
+    function link() {
+      var q = ["area=" + state.area, "fresh=" + (state.fresh ? 1 : 0), "h=" + state.h, "people=" + state.people];
+      ["sun", "top", "kit", "glass"].forEach(function (k) { if (state[k]) q.push(k + "=1"); });
+      return "https://podbor.tehnoholod369.kz/?" + q.join("&");
+    }
+    $("#thShare").addEventListener("click", function () {
+      var u = link(), b = this;
+      function done() { var o = b.textContent; b.textContent = "Ссылка скопирована"; setTimeout(function () { b.textContent = o; }, 2000); }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(u).then(done, function () { window.prompt("Ссылка на подбор:", u); });
+      else window.prompt("Ссылка на подбор:", u);
+    });
+
+    // акции и «наш выбор»
+    var sale = {}, pickBtn = null, pickOn = false;
+    fetch(RAW + "data/akcii.json").then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) { sale = (d && d.items) || {}; decorate(); }).catch(function () {});
+    var sortSeg = $("#sortSeg");
+    if (sortSeg) {
+      pickBtn = document.createElement("button");
+      pickBtn.type = "button"; pickBtn.textContent = "Акции и наш выбор";
+      sortSeg.appendChild(pickBtn);
+      pickBtn.addEventListener("click", function () {
+        pickOn = true; state.sort = "reco";
+        sortSeg.querySelectorAll("button").forEach(function (x) { x.classList.toggle("on", x === pickBtn); });
+        render();
+      });
+      sortSeg.querySelectorAll("button").forEach(function (b) { if (b !== pickBtn) b.addEventListener("click", function () { pickOn = false; pickBtn.classList.remove("on"); }); });
+    }
+
+    // ссылка на карточку на сайте
     var map = null;
+    fetch(RAW + "data/bytovye.json").then(function (r) { return r.ok ? r.json() : []; }).then(function (d) {
+      map = {}; d.forEach(function (x) { if (x.s && x.sl) map[String(x.s).toUpperCase()] = x.sl; }); decorate();
+    }).catch(function () {});
+
+    function extras() {
+      var c = calc(), parts = [state.area + " м² × 100 Вт"];
+      if ((state.h || 270) !== 270) parts.push("потолок " + (state.h / 100).toFixed(1).replace(".", ",") + " м");
+      var kk = [];
+      if (state.sun) kk.push("солнце +20 %"); if (state.top) kk.push("верхний этаж +10 %"); if (state.kit) kk.push("кухня +20 %"); if (state.glass) kk.push("панорамные окна +12 %");
+      if (kk.length) parts.push(kk.join(", "));
+      if (state.people > 2) parts.push("людей " + state.people + " (+" + (state.people - 2) * 100 + " Вт)");
+      var why = $(".th369-why");
+      if (!why && reco) { why = document.createElement("div"); why.className = "th369-why"; reco.appendChild(why); }
+      if (why) why.textContent = "Как посчитано: " + parts.join("; ") + " ≈ " + (c.req / 3.412 / 1000).toFixed(1).replace(".", ",") + " кВт → " + fmt(c.cls) + " BTU";
+      var wa = $("#thWa");
+      if (wa) wa.href = "https://wa.me/77000369369?text=" + encodeURIComponent("Здравствуйте! Подбираю кондиционер: комната " + state.area + " м², потолок " + (state.h / 100).toFixed(1).replace(".", ",") + " м, людей " + state.people + (state.fresh ? ", нужен приток свежего воздуха" : "") + ". Расчёт: " + fmt(c.cls) + " BTU. Подскажите варианты.");
+      info.style.display = state.fresh ? "block" : "none";
+    }
+
     function decorate() {
       var ms = list.querySelectorAll(".model");
       if (title) title.textContent = "Рекомендуемые модели" + (ms.length ? " · " + ms.length : "");
-      // пусто при включённом «свежем воздухе»: вместо тупика — варианты и кнопка (T-006, 07.10.2026)
-      var fr = document.querySelector(".tg.fresh.on");
+      extras();
+      var fr = $(".tg.fresh.on");
       if (!ms.length && fr && !list.querySelector(".th369-empty")) {
-        var ar = (document.getElementById("areaN") || {}).value || "";
-        var t = encodeURIComponent("Здравствуйте! Нужен кондиционер с притоком свежего воздуха на " + ar + " м². Подскажите варианты.");
-        list.insertAdjacentHTML("beforeend", '<div class="th369-empty"><b>На ' + ar + ' м² одним приточным блоком моделей нет.</b>'
-          + '<p>Что можно сделать: поставить два приточных блока (по ~35 м² каждый) или обычный кондиционер плюс отдельный приток. Посчитаем и предложим вариант.</p>'
-          + '<a class="th369-more" style="background:#0066FF;color:#fff" target="_blank" rel="noopener" href="https://wa.me/77000369369?text=' + t + '">Получить расчёт в WhatsApp</a></div>');
+        var t = encodeURIComponent("Здравствуйте! Нужен кондиционер с притоком свежего воздуха на " + state.area + " м². Подскажите варианты.");
+        list.insertAdjacentHTML("beforeend", '<div class="th369-empty"><b>На ' + state.area + ' м² одним приточным блоком моделей нет.</b><p>Что можно сделать: поставить два приточных блока (по ~35 м² каждый) или обычный кондиционер плюс отдельный приток. Посчитаем и предложим вариант.</p><a class="th369-more" style="background:#0066FF;color:#fff;border-color:#0066FF" target="_blank" rel="noopener" href="https://wa.me/77000369369?text=' + t + '">Получить расчёт в WhatsApp</a></div>');
       }
-      if (!map) return;
       ms.forEach(function (m) {
-        if (m.querySelector(".th369-more")) return;
-        var a = m.querySelector(".mart");
-        var art = a ? a.textContent.replace(/^\s*арт\.\s*/i, "").trim() : "";
-        var sl = map[art.toUpperCase()];
-        if (!sl) return;
-        var l = document.createElement("a");
-        l.className = "th369-more";
-        l.target = "_blank";
-        l.rel = "noopener";
-        l.href = "https://tehnoholod369.kz/tovar?g=bytovye&sl=" + encodeURIComponent(sl);
-        l.textContent = "Карточка на сайте →";
-        var wa = m.querySelector(".wa");
-        if (wa) m.insertBefore(l, wa); else m.appendChild(l);
+        var a = $(".mart", m), art = a ? a.textContent.replace(/^\s*арт\.\s*/i, "").trim().toUpperCase() : "";
+        if (!art) return;
+        var bd = $(".badges", m);
+        if (bd && !m.hasAttribute("data-th369")) {
+          if (sale[art]) { var s = document.createElement("span"); s.className = "th369-badge sale"; s.textContent = "Акция"; s.title = sale[art].why || ""; bd.insertBefore(s, bd.firstChild); m.setAttribute("data-sale", "1"); }
+          if (OUR_PICK.indexOf(art) >= 0) { var p = document.createElement("span"); p.className = "th369-badge pick"; p.textContent = "Наш выбор"; bd.insertBefore(p, bd.firstChild); m.setAttribute("data-pick", "1"); }
+        }
+        if (map && !$(".th369-more", m) && map[art]) {
+          var l = document.createElement("a");
+          l.className = "th369-more"; l.target = "_blank"; l.rel = "noopener";
+          l.href = "https://tehnoholod369.kz/tovar?g=bytovye&sl=" + encodeURIComponent(map[art]);
+          l.textContent = "Карточка на сайте →";
+          var wa = $(".wa", m); if (wa) m.insertBefore(l, wa); else m.appendChild(l);
+        }
+        m.setAttribute("data-th369", "1");
       });
+      if (pickOn && !list.hasAttribute("data-sorting")) {
+        list.setAttribute("data-sorting", "1");
+        var arr = Array.prototype.slice.call(ms);
+        var rank = function (x) { return (x.getAttribute("data-sale") ? 2 : 0) + (x.getAttribute("data-pick") ? 1 : 0); };
+        arr.map(function (x, i) { return [x, i]; }).sort(function (a, b) { return rank(b[0]) - rank(a[0]) || a[1] - b[1]; }).forEach(function (o) { list.appendChild(o[0]); });
+        setTimeout(function () { list.removeAttribute("data-sorting"); }, 0);
+      }
     }
-    if (list) {
-      new MutationObserver(function () { decorate(); }).observe(list, { childList: true });
-      decorate();
-      fetch("https://raw.githubusercontent.com/tehnoholod369-glitch/tehnoholod-katalog/main/novy-dizayn/data/bytovye.json")
-        .then(function (r) { return r.ok ? r.json() : []; })
-        .then(function (d) {
-          map = {};
-          d.forEach(function (x) { if (x.s && x.sl) map[String(x.s).toUpperCase()] = x.sl; });
-          decorate();
-        })
-        .catch(function () {});
-    }
-  } catch (e) {}
+    if (list) { new MutationObserver(function () { decorate(); }).observe(list, { childList: true }); }
+
+    // параметры из ссылки подбора (площадь и приток разбирает основной код; остальное — здесь)
+    var q = new URLSearchParams(location.search), changed = false;
+    if (q.get("people")) { var pv = parseInt(q.get("people"), 10); if (pv > 0 && pv <= 10) { state.people = pv; $("#ppVal").textContent = pv; changed = true; } }
+    ["sun", "top", "kit", "glass"].forEach(function (k) {
+      if (q.get(k) === "1") {
+        state[k] = true; changed = true;
+        var t = $('.tg[data-k="' + k + '"]') || $('.tg[data-k3="' + k + '"]'); if (t) t.classList.add("on");
+      }
+    });
+    if (changed) { var adv2 = $("#adv"); if (adv2) adv2.style.display = ""; render(); }
+    decorate();
+  } catch (e) { if (window.console) console.error("th369", e); }
 })();
 </script>
 </body>
