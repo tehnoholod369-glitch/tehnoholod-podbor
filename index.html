@@ -195,6 +195,9 @@ body>.wrap{margin:0 auto;padding:18px}
 .model>*{margin-left:18px;margin-right:18px}.model>.photo{margin:0 0 14px;border:0;border-radius:0;border-bottom:1px solid #E2E8F0;aspect-ratio:4/3}
 .model>*:last-child{margin-bottom:18px}
 .price{font-size:26px}
+.photo img{inset:12px;width:calc(100% - 24px);height:calc(100% - 24px)}
+.th369-empty{grid-column:1/-1;background:#fff;border:1px solid #E2E8F0;border-radius:16px;padding:22px;color:#0F172A}
+.th369-empty b{display:block;font-size:17px;color:#0033A0;margin-bottom:8px}.th369-empty p{color:#64748B;font-size:14px;line-height:1.55;margin-bottom:14px}
 .wa{background:#0066FF!important}.wa:hover{background:#0033A0!important}
 </style>
 </head>
@@ -695,6 +698,15 @@ render();
     function decorate() {
       var ms = list.querySelectorAll(".model");
       if (title) title.textContent = "Рекомендуемые модели" + (ms.length ? " · " + ms.length : "");
+      // пусто при включённом «свежем воздухе»: вместо тупика — варианты и кнопка (T-006, 07.10.2026)
+      var fr = document.querySelector(".tg.fresh.on");
+      if (!ms.length && fr && !list.querySelector(".th369-empty")) {
+        var ar = (document.getElementById("areaN") || {}).value || "";
+        var t = encodeURIComponent("Здравствуйте! Нужен кондиционер с притоком свежего воздуха на " + ar + " м². Подскажите варианты.");
+        list.insertAdjacentHTML("beforeend", '<div class="th369-empty"><b>На ' + ar + ' м² одним приточным блоком моделей нет.</b>'
+          + '<p>Что можно сделать: поставить два приточных блока (по ~35 м² каждый) или обычный кондиционер плюс отдельный приток. Посчитаем и предложим вариант.</p>'
+          + '<a class="th369-more" style="background:#0066FF;color:#fff" target="_blank" rel="noopener" href="https://wa.me/77000369369?text=' + t + '">Получить расчёт в WhatsApp</a></div>');
+      }
       if (!map) return;
       ms.forEach(function (m) {
         if (m.querySelector(".th369-more")) return;
