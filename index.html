@@ -24,13 +24,13 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/95186536" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 <title>Подбор кондиционера — ИП ТехноХолод</title>
-<meta name="description" content="Онлайн-подбор кондиционера по площади за 30 секунд: бытовые сплиты и мультисплит-системы, более 600 моделей с ценами и наличием. ИП «ТехноХолод», Алматы — доставка по Казахстану, монтаж, гарантия до 3 лет, рассрочка Kaspi.">
+<meta name="description" content="Онлайн-подбор кондиционера по площади за 30 секунд: бытовые сплиты и мультисплит-системы, более 600 моделей с ценами и наличием. ИП «ТехноХолод», Алматы — доставка по Казахстану, монтаж, гарантия 3 года при ежегодном обслуживании, рассрочка Kaspi.">
 <link rel="icon" type="image/png" href="logo_tehnoholod.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ИП «ТехноХолод»">
 <meta property="og:url" content="https://podbor.tehnoholod369.kz/">
 <meta property="og:title" content="Подбор кондиционера за 30 секунд — ИП «ТехноХолод»">
-<meta property="og:description" content="Подберите кондиционер по площади комнаты: фото, цены, наличие, рассрочка Kaspi. Доставка по Казахстану, монтаж, гарантия до 3 лет.">
+<meta property="og:description" content="Подберите кондиционер по площади комнаты: фото, цены, наличие, рассрочка Kaspi. Доставка по Казахстану, монтаж, гарантия 3 года при ежегодном обслуживании.">
 <meta property="og:image" content="https://podbor.tehnoholod369.kz/logo_tehnoholod.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://podbor.tehnoholod369.kz/logo_tehnoholod.png">
@@ -219,6 +219,8 @@ input[type=range]::-webkit-slider-thumb{border-color:var(--blue)}input[type=rang
 .cmpbtn,.moreBtn3,.descWrap summary,.trust span,.trust{color:#0033A0}
 .feat li{color:#1A1A1A}.descBox{color:#1A1A1A!important}
 .backsite{background:#fff!important}
+body>.wrap>.head{display:none!important}
+.th-t1,.th-w{font-family:'Inter',system-ui,Arial,sans-serif}
 .reco .note,.reco .small{color:#fff!important;opacity:.9}
 b,strong{font-family:inherit}.val b,.contactbar b{color:#0033A0}
 .trust span{background:#E9F4FF!important}
@@ -235,6 +237,7 @@ b,strong{font-family:inherit}.val b,.contactbar b{color:#0033A0}
  #monoSection #list .model{margin-bottom:0}
 }
 </style>
+<script src="https://cdn.jsdelivr.net/gh/tehnoholod369-glitch/tehnoholod-katalog@a86faa9d03af2c94b1ffb8b0d27cee4d2c8d5d60/novy-dizayn/th-shapka-369.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -708,24 +711,23 @@ render();
       return { req: req, need: need, cls: cls || 60000, overload: !cls };
     };
 
-    // шапка сайта
-    if (!$(".th369-bar")) {
-      var h = document.createElement("div");
-      h.innerHTML = '<div class="th369-bar"><div class="in"><span>Доставка по Казахстану</span><span class="sp"></span><a class="ph" href="tel:+77000369369">+77 000 369 369</a><span>пн–пт 9:00–18:00</span></div></div>'
-        + '<div class="th369-nav"><div class="in"><a href="https://tehnoholod369.kz/">Главная</a><a class="on" href="https://podbor.tehnoholod369.kz/">Подбор кондиционера</a><a href="https://tehnoholod369.kz/katalog">Каталог</a><a href="https://tehnoholod369.kz/kondicioner-s-pritokom">С притоком</a><a href="https://tehnoholod369.kz/kontakty">Контакты</a></div></div>';
-      while (h.lastChild) document.body.insertBefore(h.lastChild, document.body.firstChild);
-    }
+    // шапку и подвал даёт общий скрипт сайта (th-shapka-369.js), подключён в <head>
+    // формулировки по дизайн-коду: «Официальный дилер», гарантия с условием (tokens.json, decisions.confirmedClaims)
+    document.querySelectorAll('.trust span, .contactbar .note, .foot').forEach(function (e) {
+      e.childNodes.forEach(function (n) { if (n.nodeType === 3) n.textContent = n.textContent.replace('Официальный поставщик', 'Официальный дилер').replace('Гарантия до 3 лет', 'Гарантия 3 года при ежегодном обслуживании'); });
+      e.querySelectorAll('*').forEach(function (c) { c.childNodes.forEach(function (n) { if (n.nodeType === 3) n.textContent = n.textContent.replace('Официальный поставщик', 'Официальный дилер'); }); });
+    });
 
     var area = $("#areaN"), card = $("#monoSection .card"), list = $("#list"), mono = $("#monoSection");
     var reco = $(".reco"), warn = $("#warn"), title = $(".mtitle");
 
-    // быстрые кнопки площади
-    var chips = [];
+    // быстрые кнопки площади: с притоком моделей меньше 9000 BTU нет, поэтому 15 и 20 м² в этом режиме не показываем
+    var chips = [], box = null;
     function mark() { var cur = parseInt(area.value, 10); chips.forEach(function (c) { c[1].classList.toggle("on", c[0] === cur); }); }
-    if (area && card) {
-      var box = document.createElement("div");
-      box.className = "th369-chips";
-      [15, 20, 25, 35, 50, 70].forEach(function (v) {
+    function buildChips() {
+      if (!box) { box = document.createElement("div"); box.className = "th369-chips"; card.insertBefore(box, card.firstChild); }
+      box.innerHTML = ""; chips = [];
+      (state.fresh ? [25, 35, 50] : [15, 20, 25, 35, 50, 70]).forEach(function (v) {
         var b = document.createElement("button");
         b.type = "button"; b.textContent = v + " м²";
         b.addEventListener("click", function () {
@@ -736,10 +738,13 @@ render();
         });
         box.appendChild(b); chips.push([v, b]);
       });
-      card.insertBefore(box, card.firstChild);
-      area.addEventListener("input", mark); area.addEventListener("change", mark);
-      document.addEventListener("click", function () { setTimeout(mark, 50); });
       mark();
+    }
+    if (area && card) {
+      buildChips();
+      area.addEventListener("input", mark); area.addEventListener("change", mark);
+      document.addEventListener("click", function () { setTimeout(function () { if (!!state.fresh !== (box.getAttribute("data-f") === "1")) { box.setAttribute("data-f", state.fresh ? "1" : "0"); buildChips(); } mark(); }, 50); });
+      box.setAttribute("data-f", state.fresh ? "1" : "0");
     }
 
     // люди и панорамные окна — в блоке «Уточнить условия»
@@ -791,7 +796,7 @@ render();
     var sortSeg = $("#sortSeg");
     if (sortSeg) {
       pickBtn = document.createElement("button");
-      pickBtn.type = "button"; pickBtn.textContent = "Акции и наш выбор";
+      pickBtn.type = "button"; pickBtn.textContent = "Наш выбор";
       sortSeg.appendChild(pickBtn);
       pickBtn.addEventListener("click", function () {
         pickOn = true; state.sort = "reco";
