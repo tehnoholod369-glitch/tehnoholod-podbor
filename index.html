@@ -35,7 +35,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://podbor.tehnoholod369.kz/logo_tehnoholod.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;}
   :focus-visible{outline:2px solid var(--blue-d);outline-offset:2px;}
@@ -123,6 +123,42 @@
 <script src="product_urls.js"></script>
 
 <link rel="canonical" href="https://podbor.tehnoholod369.kz/">
+<style id="th369-skin">
+/* T-006, 07.10.2026: подборщик в дизайне 369 (Inter, #0033A0 / #0066FF / #E81C1C, фон #F1F5F9). Откат: удалить этот блок и вернуть шрифты Manrope/Unbounded */
+:root{--blue:#0066FF;--blue-d:#0033A0;--red:#E81C1C;--orange:#F6550D;--green:#16A34A;--ink:#0F172A;--muted:#64748B;--line:#E2E8F0;--bg:#F1F5F9;--card:#fff}
+body,button,input,select,textarea{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
+body{background:#F1F5F9;padding-top:20px}
+h1,.bname,.mname,.price,.reco .big,.val b,.val .numin,.stepper .numin{font-family:'Inter',system-ui,sans-serif;letter-spacing:-.02em}
+h1{font-size:30px;font-weight:800;color:#0033A0}
+.bname{font-weight:800;color:#0033A0}.bname span{color:#0033A0}.bname b{color:#E81C1C}
+.card,.model,.cmpDlg{border-radius:16px;box-shadow:none;border:1px solid #E2E8F0}
+.model:hover{box-shadow:0 10px 28px -18px rgba(15,23,42,.25)}
+.model.fresh{border-color:#16A34A;box-shadow:0 0 0 1.5px #16A34A}
+.mname{font-weight:700;font-size:18px;color:#0F172A}
+.price{font-weight:800;color:#E81C1C}
+.reco{background:#0033A0;border-radius:16px}
+.reco .big{font-weight:800}
+.callbtn{background:#0033A0!important;border-radius:10px!important}
+.cattabs button{border-radius:12px;border-color:#E2E8F0}
+.cattabs button:hover{border-color:#0066FF}
+.cattabs button.on{background:#0033A0!important;border-color:#0033A0!important;color:#fff!important}
+.seg{background:#F1F5F9;border-radius:12px}.seg button.on{color:#0033A0}
+.tg.on{border-color:#0066FF;background:#EFF6FF;color:#0033A0}.tg.on .box{background:#0066FF;border-color:#0066FF}
+.tg.fresh.on{border-color:#16A34A;background:#ECFDF5;color:#047857}.tg.fresh.on .box{background:#16A34A;border-color:#16A34A}
+.stbtn{border-radius:10px;color:#0033A0;background:#F8FAFC;border-color:#E2E8F0}.stbtn:hover{border-color:#0066FF;background:#EFF6FF}.stbtn:active{background:#0033A0;border-color:#0033A0;color:#fff}
+.val .numin,.stepper .numin{border-color:#E2E8F0;color:#0033A0;border-radius:10px}
+.val .numin:focus{border-color:#0066FF;box-shadow:0 0 0 3px rgba(0,102,255,.18)}
+input[type=range]{background:linear-gradient(90deg,#0066FF,#0033A0)}
+input[type=range]::-webkit-slider-thumb{border-color:#0066FF}input[type=range]::-moz-range-thumb{border-color:#0066FF}
+.more{color:#0066FF}
+.chip{color:#0033A0;background:#EFF6FF;border-color:#DBEAFE}
+.photo{border-radius:12px;background:#F8FAFC}
+.wa{border-radius:10px;font-weight:700}
+.mtitle{color:#0033A0;text-transform:none;font-size:18px;letter-spacing:0;font-weight:800}
+.backsite{color:#0066FF!important;border-radius:10px!important}
+.foot a,.thpb a{color:#0066FF}
+.warn{border-radius:12px}
+</style>
 </head>
 <body>
 <div class="wrap">
