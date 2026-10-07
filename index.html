@@ -748,7 +748,7 @@ render();
     // рассрочка до 24 месяцев (решение владельца 07.10.2026); дубль «Официальный дилер» из чипов убран — он есть рядом с телефоном
     document.querySelectorAll('.trust span').forEach(function (e) {
       var t = e.textContent.trim();
-      if (/Рассрочка$/.test(t)) e.lastChild.textContent = " Рассрочка до 24 месяцев";
+      if (/Рассрочка$/.test(t)) e.lastChild.textContent = "💳 Рассрочка до 24 месяцев";
       if (/Официальный (поставщик|дилер)$/.test(t)) e.remove();
     });
     document.querySelectorAll('.trust span, .contactbar .note, .foot').forEach(function (e) {
