@@ -829,6 +829,7 @@ render();
         list.insertAdjacentHTML("beforeend", '<div class="th369-empty"><b>На ' + state.area + ' м² одним приточным блоком моделей нет.</b><p>Что можно сделать: поставить два приточных блока (по ~35 м² каждый) или обычный кондиционер плюс отдельный приток. Посчитаем и предложим вариант.</p><a class="th369-more" style="background:#0066FF;color:#fff;border-color:#0066FF" target="_blank" rel="noopener" href="https://wa.me/77000369369?text=' + t + '">Получить расчёт в WhatsApp</a></div>');
       }
       ms.forEach(function (m) {
+        if (!$(".thumbs", m) && $(".photo", m) && !m.hasAttribute("data-ph")) { m.setAttribute("data-ph", "1"); $(".photo", m).insertAdjacentHTML("afterend", '<div class="thumbs"></div>'); }
         var a = $(".mart", m), art = a ? a.textContent.replace(/^\s*арт\.\s*/i, "").trim().toUpperCase() : "";
         if (!art) return;
         var bd = $(".badges", m);
