@@ -926,6 +926,25 @@ render();
       });
     }
     fixLinks();
+    // избранное и сравнение подборщика передаются на страницы сайта в ссылке (у сайта другой адрес — своё хранилище браузера; приём — в th-izbrannoe.js)
+    function exportParam() {
+      if (!window.THFav) return "";
+      var f = window.THFav.избранное().slice(0, 40), c = window.THFav.сравнение().slice(0, 4);
+      if (!f.length && !c.length) return "";
+      var j = JSON.stringify({ f: f, c: c });
+      return btoa(unescape(encodeURIComponent(j))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+    }
+    function syncHeaderLinks() {
+      var p = exportParam();
+      document.querySelectorAll('a[href*="tehnoholod369.kz/izbrannoe"], a[href*="tehnoholod369.kz/sravnenie"]').forEach(function (a) {
+        var base = a.getAttribute("href").replace(/([?&])th_import=[^&]*(&|$)/, "$1").replace(/[?&]$/, "");
+        a.setAttribute("href", p ? base + (base.indexOf("?") < 0 ? "?" : "&") + "th_import=" + p : base);
+      });
+    }
+    window.addEventListener("th-fav", syncHeaderLinks);
+    window.addEventListener("storage", syncHeaderLinks);
+    setInterval(syncHeaderLinks, 1500);
+    setTimeout(syncHeaderLinks, 800);
     var fx = 0; new MutationObserver(function () { if (fx) return; fx = setTimeout(function () { fx = 0; fixLinks(); }, 200); }).observe(document.body, { childList: true, subtree: true });
     decorate();
   } catch (e) { if (window.console) console.error("th369", e); }
