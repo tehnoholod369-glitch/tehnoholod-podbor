@@ -256,6 +256,18 @@ b,strong{font-family:inherit}.val b,.contactbar b{color:#0033A0}
  #monoSection #list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin-top:16px}
  #monoSection #list .model{margin-bottom:0}
 }
+
+/* симметрия: бренды и ряды кнопок — ровные сетки */
+#monoSection .brandrow{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+#monoSection .brandrow button{width:100%;min-height:52px;height:52px;padding:6px 8px;justify-content:center}
+#monoSection .brandrow button img.bl,#monoSection .brandrow button .brandimg{max-height:24px;max-width:90%;width:auto;height:auto;object-fit:contain}
+#monoSection .brandrow button .wm{font-size:13px}
+#monoSection #sortSeg,#monoSection #instSeg{grid-template-columns:repeat(2,minmax(0,1fr))}
+.trust{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.trust span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:8px 10px;line-height:1.25}
+@media(max-width:700px){.trust{grid-template-columns:repeat(2,minmax(0,1fr))}#monoSection .brandrow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.th369-trust{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1100px){.th369-trust{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 <script src="https://cdn.jsdelivr.net/gh/tehnoholod369-glitch/tehnoholod-katalog@a86faa9d03af2c94b1ffb8b0d27cee4d2c8d5d60/novy-dizayn/th-shapka-369.js"></script>
 </head>
@@ -733,6 +745,12 @@ render();
 
     // шапку и подвал даёт общий скрипт сайта (th-shapka-369.js), подключён в <head>
     // формулировки по дизайн-коду: «Официальный дилер», гарантия с условием (tokens.json, decisions.confirmedClaims)
+    // рассрочка до 24 месяцев (решение владельца 07.10.2026); дубль «Официальный дилер» из чипов убран — он есть рядом с телефоном
+    document.querySelectorAll('.trust span').forEach(function (e) {
+      var t = e.textContent.trim();
+      if (/Рассрочка$/.test(t)) e.lastChild.textContent = " Рассрочка до 24 месяцев";
+      if (/Официальный (поставщик|дилер)$/.test(t)) e.remove();
+    });
     document.querySelectorAll('.trust span, .contactbar .note, .foot').forEach(function (e) {
       e.childNodes.forEach(function (n) { if (n.nodeType === 3) n.textContent = n.textContent.replace('Официальный поставщик', 'Официальный дилер').replace('Гарантия до 3 лет', 'Гарантия 3 года при ежегодном обслуживании'); });
       e.querySelectorAll('*').forEach(function (c) { c.childNodes.forEach(function (n) { if (n.nodeType === 3) n.textContent = n.textContent.replace('Официальный поставщик', 'Официальный дилер'); }); });
@@ -778,7 +796,7 @@ render();
     info.innerHTML = '<b>Приточные модели забирают воздух с улицы</b>Через фильтр HEPA, окно открывать не нужно. Как это работает: <br><a href="https://tehnoholod369.kz/kak-rabotaet-konditsioner-s-pritokom">Как работает приток</a><a href="https://tehnoholod369.kz/brizer-ili-konditsioner-s-pritokom">Бризер или кондиционер с притоком</a><a href="https://tehnoholod369.kz/pritok-vozdukha-vs-fortochka">Приток или форточка</a>';
     var trust = document.createElement("div");
     trust.className = "th369-trust";
-    trust.innerHTML = '<div><b>Официальный дилер</b><span>Оборудование ведущих брендов</span></div><div><b>Гарантия 3 года</b><span>при условии ежегодного обслуживания</span></div><div><b>Доставка по Алматы бесплатно</b><span>при заказе от 100 000 ₸</span></div><div><b>Рассрочка</b><span>Kaspi / банк, 12 месяцев</span></div>';
+    trust.innerHTML = '<div><b>Официальный дилер</b><span>Оборудование ведущих брендов</span></div><div><b>Гарантия 3 года</b><span>при условии ежегодного обслуживания</span></div><div><b>Доставка по Алматы бесплатно</b><span>при заказе от 100 000 ₸</span></div><div><b>Рассрочка</b><span>Kaspi / банк, до 24 месяцев</span></div>';
     if (mono && warn) { warn.insertAdjacentElement("afterend", info); warn.insertAdjacentElement("afterend", help); var foot = $(".foot", mono); if (foot) mono.insertBefore(trust, foot); else mono.appendChild(trust); }
 
     function link() {
