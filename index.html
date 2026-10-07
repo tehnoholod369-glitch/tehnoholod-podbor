@@ -220,6 +220,15 @@ input[type=range]::-webkit-slider-thumb{border-color:var(--blue)}input[type=rang
 .feat li{color:#1A1A1A}.descBox{color:#1A1A1A!important}
 .backsite{background:#fff!important}
 body>.wrap>.head{display:none!important}
+/* порядок и симметрия: кнопки не выходят за карточку, карточки одной высоты, кнопки прижаты к низу, ряды фильтров переносятся */
+.model>*{max-width:calc(100% - 32px)}.model>.photo{max-width:none}
+.model>.cmpbtn,.model>.vidbtn,.model>.wa,.model>.th369-more{width:calc(100% - 32px)!important;box-sizing:border-box}
+.model>.cmpbtn{margin-top:auto!important}
+.model .feat li:nth-child(n+5){display:none}
+.model .thumbs{min-height:56px;max-height:56px;overflow:hidden}
+#monoSection .seg{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:6px}
+#monoSection .seg button{white-space:normal;text-align:center;padding:10px 6px;line-height:1.2}
+#monoSection .brandrow{gap:8px}
 .th-t1,.th-w{font-family:'Inter',system-ui,Arial,sans-serif}
 .reco .note,.reco .small{color:#fff!important;opacity:.9}
 b,strong{font-family:inherit}.val b,.contactbar b{color:#0033A0}
