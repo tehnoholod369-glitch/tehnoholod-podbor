@@ -726,7 +726,7 @@ render();
 (function () {
   var RAW = "https://raw.githubusercontent.com/tehnoholod369-glitch/tehnoholod-katalog/main/novy-dizayn/";
   // «Наш выбор» — редакционная метка владельца; список артикулов правится здесь
-  var OUR_PICK = ["TAC-FR09HSV/P7W", "TAC-FR12HSV/P7W", "TAC-FR18HSV/P7W"];
+  var OUR_PICK = []; // + все модели TCL FreshIN 3.0 (артикул TAC-FR…): белые, серебристые, чёрные — решение владельца 07.10.2026
   function $(s, r) { return (r || document).querySelector(s); }
   function fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
   try {
@@ -906,7 +906,7 @@ render();
         if (bd && saleReady && !m.hasAttribute("data-th369b")) {
           m.setAttribute("data-th369b", "1");
           if (sale[art]) { var s = document.createElement("span"); s.className = "th369-badge sale"; s.textContent = "Акция"; s.title = sale[art].why || ""; bd.insertBefore(s, bd.firstChild); m.setAttribute("data-sale", "1"); }
-          if (OUR_PICK.indexOf(art) >= 0) { var p = document.createElement("span"); p.className = "th369-badge pick"; p.textContent = "Наш выбор"; bd.insertBefore(p, bd.firstChild); m.setAttribute("data-pick", "1"); }
+          if (/^TAC-FR/.test(art) || OUR_PICK.indexOf(art) >= 0) { var p = document.createElement("span"); p.className = "th369-badge pick"; p.textContent = "Наш выбор"; bd.insertBefore(p, bd.firstChild); m.setAttribute("data-pick", "1"); }
         }
         if (map && !$(".th369-more", m) && map[art]) {
           var l = document.createElement("a");
@@ -915,6 +915,9 @@ render();
           l.textContent = "Карточка на сайте →";
           var wa = $(".wa", m); if (wa) m.insertBefore(l, wa); else m.appendChild(l);
         }
+        // рассрочка до 24 месяцев (решение владельца 07.10.2026): сумму платежа не считаем — для 24 мес. правила расчёта нет, как на карточке сайта
+        var rs = $(".rass", m);
+        if (rs && !rs.hasAttribute("data-r24")) { rs.setAttribute("data-r24", "1"); rs.innerHTML = '<span class="kaspi">Kaspi</span> рассрочка до 24 мес. Оформляет банк'; }
         m.setAttribute("data-th369", "1");
       });
       if (pickOn && !list.hasAttribute("data-sorting")) {
