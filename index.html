@@ -223,7 +223,17 @@ body>.wrap>.head{display:none!important}
 /* порядок и симметрия: кнопки не выходят за карточку, карточки одной высоты, кнопки прижаты к низу, ряды фильтров переносятся */
 .model>*{max-width:calc(100% - 32px)}.model>.photo{max-width:none}
 .model>.cmpbtn,.model>.vidbtn,.model>.wa,.model>.th369-more{width:calc(100% - 32px)!important;box-sizing:border-box}
-.model>.cmpbtn{margin-top:auto!important}
+.model>.cmpbtn{display:none!important}
+.model>.vidbtn{margin-top:auto!important}.model>.th369-more{margin-top:auto}.model>.vidbtn+.th369-more{margin-top:8px!important}
+/* значки на фото: избранное, сравнить, отправить */
+.th369-act{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:8px;z-index:2}
+.th369-act button{width:36px;height:36px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--blue-d);display:grid;place-items:center;cursor:pointer;padding:0;box-shadow:var(--sh-s)}
+.th369-act button:hover{border-color:var(--blue)}
+.th369-act button.on{background:var(--blue-d);border-color:var(--blue-d);color:#fff}
+.th369-act svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.th369-act .a-fav.on svg{fill:currentColor}
+.th369-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--blue-d);color:#fff;font:600 14px/20px Inter,sans-serif;padding:12px 20px;border-radius:8px;box-shadow:var(--sh-l);z-index:99999}
+#thFav.on{background:var(--blue-d);color:#fff;border-color:var(--blue-d)}#thFav:disabled{background:#E5E9F0;color:#606F85;border-color:#E5E9F0;cursor:not-allowed}
 .model .feat li:nth-child(n+5){display:none}
 .model .thumbs{min-height:56px;max-height:56px;overflow:hidden}
 #monoSection .seg{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:6px}
@@ -819,6 +829,27 @@ render();
       info.style.display = state.fresh ? "block" : "none";
     }
 
+    // избранное подборщика хранится в этом браузере (общего хранилища с сайтом у другого адреса нет)
+    var favs = [], favOnly = false;
+    try { favs = JSON.parse(localStorage.getItem("th369fav") || "[]") || []; } catch (e) { favs = []; }
+    function toast(t) {
+      var e = document.createElement("div"); e.className = "th369-toast"; e.textContent = t; document.body.appendChild(e);
+      setTimeout(function () { e.remove(); }, 2200);
+    }
+    function favUi() {
+      var b = $("#thFav"); if (!b) return;
+      b.textContent = "Избранное · " + favs.length;
+      b.classList.toggle("on", favOnly);
+      b.disabled = !favs.length && !favOnly;
+    }
+    var acts = $(".th369-help .acts");
+    if (acts) {
+      var fb = document.createElement("button");
+      fb.type = "button"; fb.id = "thFav"; fb.className = "th369-more";
+      fb.addEventListener("click", function () { favOnly = !favOnly; favUi(); decorate(); });
+      acts.appendChild(fb); favUi();
+    }
+
     function decorate() {
       var ms = list.querySelectorAll(".model");
       if (title) title.textContent = "Рекомендуемые модели" + (ms.length ? " · " + ms.length : "");
@@ -832,6 +863,36 @@ render();
         if (!$(".thumbs", m) && $(".photo", m) && !m.hasAttribute("data-ph")) { m.setAttribute("data-ph", "1"); $(".photo", m).insertAdjacentHTML("afterend", '<div class="thumbs"></div>'); }
         var a = $(".mart", m), art = a ? a.textContent.replace(/^\s*арт\.\s*/i, "").trim().toUpperCase() : "";
         if (!art) return;
+        if (!$(".th369-act", m) && $(".photo", m)) {
+          var cb = $(".cmpbtn", m);
+          var act = document.createElement("div");
+          act.className = "th369-act";
+          act.innerHTML = '<button type="button" class="a-fav" title="В избранное" aria-label="В избранное"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.3-9.1C1.2 8.8 3 5.5 6.2 5.5c1.9 0 3.2 1 3.8 2.2.6-1.2 1.9-2.2 3.8-2.2 3.2 0 5 3.3 3.5 6.4C19 16.4 12 21 12 21z"/></svg></button>'
+            + '<button type="button" class="a-cmp" title="Сравнить" aria-label="Сравнить"><svg viewBox="0 0 24 24"><path d="M6 20V10M12 20V4M18 20v-7"/></svg></button>'
+            + '<button type="button" class="a-share" title="Отправить" aria-label="Отправить"><svg viewBox="0 0 24 24"><path d="M12 15V3M7 8l5-5 5 5M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg></button>';
+          $(".photo", m).appendChild(act);
+          var bf = $(".a-fav", act), bc = $(".a-cmp", act), bs = $(".a-share", act);
+          bf.classList.toggle("on", favs.indexOf(art) >= 0);
+          bc.classList.toggle("on", !!(cb && cb.classList.contains("on")));
+          bf.addEventListener("click", function () {
+            var i = favs.indexOf(art);
+            if (i >= 0) favs.splice(i, 1); else favs.push(art);
+            try { localStorage.setItem("th369fav", JSON.stringify(favs)); } catch (e) {}
+            bf.classList.toggle("on", favs.indexOf(art) >= 0);
+            favUi();
+            if (favOnly) decorate();
+          });
+          bc.addEventListener("click", function () { if (cb) cb.click(); });
+          bs.addEventListener("click", function () {
+            var nm = $(".mname", m) ? $(".mname", m).textContent : "Кондиционер";
+            var pr = $(".price", m) ? $(".price", m).firstChild.textContent.trim() : "";
+            var url = map && map[art] ? "https://tehnoholod369.kz/tovar?g=bytovye&sl=" + encodeURIComponent(map[art]) : link();
+            if (navigator.share) { navigator.share({ title: nm, text: nm + (pr ? " — " + pr : ""), url: url }).catch(function () {}); }
+            else if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(url).then(function () { toast("Ссылка скопирована"); }, function () { window.prompt("Ссылка:", url); }); }
+            else window.prompt("Ссылка:", url);
+          });
+        }
+        m.style.display = (favOnly && favs.indexOf(art) < 0) ? "none" : "";
         var bd = $(".badges", m);
         var saleReady = saleLoaded;
         if (bd && saleReady && !m.hasAttribute("data-th369b")) {
